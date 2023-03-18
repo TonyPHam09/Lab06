@@ -1,0 +1,174 @@
+package QuanLyNhanVien;
+
+public class NhanVien {
+	protected String ten;
+	protected long luong;
+	public NhanVien() {}
+	public NhanVien(String ten, long luong) {
+		this.ten = ten;
+		this.luong = luong;
+	}
+	public String getTen() {
+		return ten;
+	}
+	public void setTen(String ten) {
+		this.ten = ten;
+	}
+	public long getLuong() {
+		return luong;
+	}
+	public void setLuong(long luong) {
+		this.luong = luong = 50000;
+	}
+	protected String loaiNhanVine() {
+		return "full-time" + "part-time";	
+	}
+	public void tinhLuong() {
+		System.out.println("Luong nhan vien: " + this.luong);
+	}
+	public void xuatThongTin() {
+		System.out.println("Ten nhan vien: " + this.ten + " - Luong nhan vien: " + this.luong);
+	}
+}
+
+
+package QuanLyNhanVien;
+
+public class NhanVienFullTime extends NhanVien{
+	private int loaiChucVu;
+	private int ngayLamThem;
+	
+	public NhanVienFullTime() {}
+
+	public NhanVienFullTime(int loaiChucVu, int ngayLamThem, String ten) {
+		this.loaiChucVu = loaiChucVu;
+		this.ngayLamThem = ngayLamThem;
+	}
+
+	public int getLoaiChucVu() {
+		return loaiChucVu;
+	}
+
+	public void setLoaiChucVu(int loaiChucVu) {
+		this.loaiChucVu = loaiChucVu;
+	}
+
+	public int getNgayLamThem() {
+		return ngayLamThem;
+	}
+
+	public void setNgayLamThem(int ngayLamThem) {
+		this.ngayLamThem = ngayLamThem;
+	}
+	
+	@Override
+	public String getTen() {
+		return ten;
+	}
+	public void setTen(String ten) {
+		this.ten = ten;
+	}
+	public long getLuong() {
+		return luong;
+	}
+	public void setLuong(long luong) {
+		this.luong = luong = 250000;
+	}
+	
+	public String loaiNhanVien() {
+		System.out.println("full-time");
+		return loaiNhanVien();
+	}
+	public void tinhLuong() {
+		float luongFull = this.luong * this.ngayLamThem;
+		System.out.println("Luong nhan vien: " + luongFull);
+	}
+}
+
+
+
+package QuanLyNhanVien;
+
+public class NhanVienPartTime extends NhanVien{
+	private int gioLamViec;
+	
+	public NhanVienPartTime() {}
+
+	public NhanVienPartTime(int gioLamViec, String ten) {
+		this.gioLamViec = gioLamViec;
+	}
+
+	public int getGioLamViec() {
+		return gioLamViec;
+	}
+
+	public void setGioLamViec(int gioLamViec) {
+		this.gioLamViec = gioLamViec;
+	}
+	
+	@Override
+	public String getTen() {
+		return ten;
+	}
+	public void setTen(String ten) {
+		this.ten = ten;
+	}
+	public long getLuong() {
+		return luong;
+	}
+	public void setLuong(long luong) {
+		this.luong = luong;
+	}
+	
+	public String loaiNhanVien() {
+		System.out.println("part-time");
+		return loaiNhanVien();
+	}
+	public void tinhLuong() {
+		float luongFull = this.luong * this.gioLamViec;
+		System.out.println("Luong nhan vien: " + luongFull);
+	}
+}
+
+
+
+package QuanLyNhanVien;
+
+import java.util.Scanner;
+
+public class MainNhanVien {
+	public static void main(String[] args) {
+		int a;
+		Scanner input = new Scanner(System.in);
+		NhanVien nv = new NhanVien();
+		NhanVienFullTime ft = new NhanVienFullTime();
+		NhanVienPartTime pt = new NhanVienPartTime();
+		System.out.println("thong tin nhan vien");
+		System.out.println("Nhap ho va ten nhan vien: ");
+		nv.setTen(input.nextLine());
+		System.out.println("1. Nhan vien full-time");
+		System.out.println("2. Nhan vien part-time");
+		do {
+			a = input.nextInt();
+			if(a<=0 || a>2) {
+				System.out.println("Nhap lai");
+			}
+				else {
+					if(a==1) {
+						System.out.println("Nhap so ngay lam them: ");
+						ft.setNgayLamThem(input.nextInt());
+						ft.setLuong(150000);
+						ft.tinhLuong();
+				}else {
+					if(a==2) {
+						System.out.println("Nhap so gio lam: ");
+						pt.setGioLamViec(input.nextInt());
+						pt.setLuong(25000);
+						pt.tinhLuong();
+					}	
+				}
+			}
+		}while(a<=0 || a>2);
+	}
+}
+
