@@ -44,6 +44,9 @@ public class HocSinh {
 	public void setHoa(float hoa) {
 		this.Hoa = hoa;
 	}
+	public String toString() {
+		return "HocSinh [hoTen=" + this.hoTen + ", Lop=" + this.Lop + ", Toan=" + this.Toan + ", Ly=" + this.Ly + ", Hoa=" + this.Hoa + "]";
+	}
 }
 
 
@@ -128,6 +131,7 @@ public class mainHocSinh {
 		hsc.setHoa(sc.nextFloat());
 
 		System.out.println("-----INFO-----");
+		System.out.println(hs.toString());
 		hsc.trungBinh();
 	}
 }
