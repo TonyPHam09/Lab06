@@ -159,12 +159,14 @@ public class MainNhanVien {
 						ft.setNgayLamThem(input.nextInt());
 						ft.setLuong(150000);
 						ft.tinhLuong();
+						nv.xuatThongTin();
 				}else {
 					if(a==2) {
 						System.out.println("Nhap so gio lam: ");
 						pt.setGioLamViec(input.nextInt());
 						pt.setLuong(25000);
 						pt.tinhLuong();
+						nv.xuatThongTin();
 					}	
 				}
 			}
