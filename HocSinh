@@ -1,11 +1,11 @@
 package DiemHocSinh;
 
+package DiemHocSinh;
+
 public class HocSinh {
-	public String hoTen;
-	public String Lop;
-	public float Toan;
-	public float Ly;
-	public float Hoa;
+	public String hoTen, Lop;
+	public float Toan, Ly, Hoa;
+	public float trungBinh;
 	public HocSinh() {}
 	public HocSinh(String hoTen, String lop, float toan, float ly, float hoa) {
 		this.hoTen = hoTen;
@@ -44,6 +44,9 @@ public class HocSinh {
 	public void setHoa(float hoa) {
 		this.Hoa = hoa;
 	}
+	public void trungBinh() {
+		this.trungBinh = trungBinh;
+	}
 	public String toString() {
 		return "HocSinh [hoTen=" + this.hoTen + ", Lop=" + this.Lop + ", Toan=" + this.Toan + ", Ly=" + this.Ly + ", Hoa=" + this.Hoa + "]";
 	}
@@ -51,57 +54,26 @@ public class HocSinh {
 
 
 
+
 package DiemHocSinh;
 
 public class HocSinhChuyenToan extends HocSinh{
-	public String hoTen;
-	private String Lop;
-	public float Toan;
-	public float Ly;
-	public float Hoa;
-	public HocSinhChuyenToan() {}
-	public HocSinhChuyenToan(String hoTen, String lop, float toan, float ly, float hoa) {
-		this.hoTen = hoTen;
-		Lop = lop;
-		Toan = toan;
-		Ly = ly;
-		Hoa = hoa;
+	@Override
+	public void setToan(float Toan) {
+		this.Toan = Toan;
 	}
-	public String getHoTen() {
-		return this.hoTen;
+	public void setLy(float Ly) {
+		this.Ly = Ly;
 	}
-	public void setHoTen(String hoTen) {
-		this.hoTen = hoTen;
-	}
-	public String getLop() {
-		return Lop;
-	}
-	public void setLop(String lop) {
-		this.Lop = lop;
-	}
-	public float getToan() {
-		return Toan;
-	}
-	public void setToan(float toan) {
-		this.Toan = toan;
-	}
-	public float getLy() {
-		return Ly;
-	}
-	public void setLy(float ly) {
-		this.Ly = ly;
-	}
-	public float getHoa() {
-		return Hoa;
-	}
-	public void setHoa(float hoa) {
-		this.Hoa = hoa;
+	public void setHoa(float Hoa) {
+		this.Hoa = Hoa;
 	}
 	public void trungBinh() {
 		float tb = ((this.Toan * 2) + this.Ly + this.Hoa) / 4;
 		System.out.println("DIEM TB: " + tb);
 	}
 }
+
 
 
 
@@ -113,7 +85,7 @@ public class mainHocSinh {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 		HocSinh hs = new HocSinh();
-		HocSinhChuyenToan hsc = new HocSinhChuyenToan();
+		hs = new HocSinhChuyenToan();
 		
 		System.out.println("Nhap ho ten hoc sinh: ");
 		hs.setHoTen(sc.nextLine());;
@@ -122,16 +94,16 @@ public class mainHocSinh {
 		hs.setLop(sc.nextLine());
 		
 		System.out.println("Nhap Diem Toan: ");
-		hsc.setToan(sc.nextFloat());
+		hs.setToan(sc.nextFloat());
 		
 		System.out.println("Nhap Diem Ly: ");
-		hsc.setLy(sc.nextFloat());
+		hs.setLy(sc.nextFloat());
 		
 		System.out.println("Nhap Diem Hoa: ");
-		hsc.setHoa(sc.nextFloat());
+		hs.setHoa(sc.nextFloat());
 
 		System.out.println("-----INFO-----");
 		System.out.println(hs.toString());
-		hsc.trungBinh();
+		hs.trungBinh();
 	}
 }
